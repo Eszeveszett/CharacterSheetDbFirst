@@ -1,0 +1,80 @@
+﻿<Page x:Class="CharacterSheetDbFirst.Pages.SelectReadyCharacterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CharacterSheetDbFirst.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SelectReadyCharacterPage" Background="LightGreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Fajk és nem alapján rendezés-->
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" 
+            HorizontalAlignment="Left" Orientation="Horizontal">
+            <Label Content="Race"/>
+            <ComboBox x:Name="CBO_RaceSelector" Width="200"/>
+            <Label Content="Gender"/>
+            <ComboBox x:Name="CBO_GenderSelector" Width="200"/>
+        </StackPanel>
+
+        <!--Karakterlista-->
+        <!--<StackPanel Margin="5">
+            <Label Content="Választható Karakterek" FontWeight="Bold"/>
+            <DataGrid x:Name="DG_PlayingCharacter" AutoGenerateColumns="False"
+                IsReadOnly="True" VerticalScrollBarVisibility="Visible">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Race" Binding="{Binding Race.RaceName}"/>
+                    <DataGridTextColumn Header="Gender" Binding="{Binding Race.Gender}"/>
+                    <DataGridTextColumn Header="Vitality" Binding="{Binding Vitality}"/>
+                    <DataGridTextColumn Header="Dexterity" Binding="{Binding Dexterity}"/>
+                    <DataGridTextColumn Header="Intuition" Binding="{Binding Intuition}"/>
+                    <DataGridTextColumn Header="Charisma" Binding="{Binding Charisma}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>-->
+
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <ListBox x:Name="LBO_PlayingCharacter" Height="220" Width="200"
+                     Margin="5,25,5,5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Race.RaceName}"/>
+                                </StackPanel>
+
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Race.Gender}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BTN_Male" Content="Male" Margin="5"
+                        />
+                <Button x:Name="BTN_Female" Content="Female" Margin="5"
+                        />
+                <Button x:Name="BTN_All" Content="All" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
